@@ -6,7 +6,7 @@ class PaymentForm(forms.ModelForm):
 
     email = forms.EmailField(
         label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', }))
 
     amount = forms.IntegerField(
         label='Amount', widget=forms.TextInput(
