@@ -49,6 +49,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("blog:post_detail", args=[self.slug])
 
+    def get_comments(self):
+        return self.comments.filter(parent=None).filter(active=True)
+
 # comment model
 
 

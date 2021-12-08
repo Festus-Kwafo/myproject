@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Count, Q, query
 
 from .models import *
 from .forms import *
@@ -30,6 +31,10 @@ def post_list(request, tag_slug=None):
         # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
 
+    query = request.GET.get("q")
+    if query:
+        posts = Post.published.filter(Q(title__icontains=query) | Q(
+            tags__name__icontains=query)).distinct()
     return render(request, 'blog/blog.html', {'posts': posts, page: 'pages'})
 
 # detail of post view
@@ -37,15 +42,20 @@ def post_list(request, tag_slug=None):
 
 def post_detail(request, post):
     post = get_object_or_404(Post, slug=post, status=1)
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(
+        tags__in=post_tags_ids).exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count(
+        'tags')).order_by('-same_tags', '-publish')[:6]
 
     # list of active comments for this post
     comments = post.comments.filter(active=True)
     new_comment = None
-    comment_form = CommentForm(data=request.POST)
+    comment_form = CommentForm(request.POST or None)
 
     if request.method == 'POST':
         # comment was posted
-        comment_form = CommentForm(data=request.POST)
+
         if comment_form.is_valid():
             # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
@@ -58,7 +68,7 @@ def post_detail(request, post):
         else:
             comment_form = CommentForm()
 
-    return render(request, 'blog/article.html', {'post': post, 'comments': comments, 'comment_form': comment_form})
+    return render(request, 'blog/article.html', {'post': post, 'comment_form': comment_form, 'comments': comments, 'similar_posts': similar_posts})
 
 # handling reply, reply view
 

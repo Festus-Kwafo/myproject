@@ -2,7 +2,7 @@
 {%endblock%} {%load static%} {%block content%}
 <!-- Begin Li's Breadcrumb Area -->
 <div class="breadcrumb-area">
-  <div class="container">
+  <div class="container ">
     <div class="breadcrumb-content">
       <ul>
         <li><a href= {% url 'store:all_products' %}>Home</a></li>
@@ -11,8 +11,28 @@
     </div>
   </div>
 </div>
+
+    <div class="container" >
+        <div class="row" style= "justify-content: center">
+<div class= "col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+    <form class="hm-searchbox" action="{%url 'blog:blog'%}">
+        <input class="form-control mr-0" type="search" value="{{request.GET.q}}" name="q" placeholder="Search" aria-label="Search">
+    </form>
+</div>
+</div>
+</div>
+
+
 <!-- Li's Breadcrumb Area End Here -->
 <!-- Begin Li's Main Blog Page Area -->
+<div class="container">
+    <h2 class="my-3">
+        {% if request.GET.q is not null %}
+          Search Results for "{{ request.GET.q }}"
+        {% endif %}
+      </h2>
+    
+</div>
 {% if tag %}
 <h2 class="mb-3">Posts tagged with "{{ tag.name }}"</h2>
 {% endif %}
