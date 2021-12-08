@@ -204,8 +204,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # PAYSTACT SECRET KEYS
-PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
-PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY')
+#PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
+#PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -229,3 +229,5 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = config('EMAIL_PORT')
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+SITE_ID = 1
