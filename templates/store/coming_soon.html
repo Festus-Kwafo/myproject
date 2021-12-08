@@ -1,0 +1,41 @@
+{%extends './base.html'%} {%load static%}{% block title %}Coming Soon...{% endblock%}{%block content%}
+
+
+
+
+    
+    <!-- Styles -->
+       
+	<link href= {%static "css/styles1.css" %} rel="stylesheet">
+
+
+    
+    <!-- Header -->
+    <div id="header1" class="header1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-container">
+                        <div class="countdown">
+                            <span id="clock"></span>
+                        </div> <!-- end of countdown -->
+                        <h1>Delivery Service Coming Soon</h1>
+                        <p class="p-large">Sales and servicing of laptops and accessories. We provide the best there is. For all your IT solutions, we got you... Our goal is to ensure transparency and Genuity to reduce variable costs.</p>
+                        
+                       
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+        
+    </div> <!-- end of header -->
+    <!-- end of header -->
+
+
+    <!-- Scripts -->
+    <script src={%static "js/jquery.min.js"%}></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src={%static "js/bootstrap.min.js"%}></script> <!-- Bootstrap framework -->
+    <script src={%static "js/jquery.easing.min.js"%}></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src={%static "js/jquery.countdown.min.js"%}></script> <!-- The Final Countdown plugin for jQuery -->
+    <script src={%static "js/scripts.js"%}></script> <!-- Custom scripts -->
+{%endblock%}
