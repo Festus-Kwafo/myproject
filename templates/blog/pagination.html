@@ -18,7 +18,7 @@
       {% if page.number == i %}
         <li class="active page-item"><span class="page-link">{{ i }}</span></li>
       {% else %}
-        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
       {% endif %}
     {% endfor %}
     {% if page.has_next %}
