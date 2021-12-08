@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'basket',
     'account',
     'blog',
+    'payment',
     'django_countries',
     'ckeditor',
     'ckeditor_uploader',

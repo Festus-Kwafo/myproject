@@ -6,8 +6,6 @@ from django.urls import reverse
 
 from core.settings import AUTH_USER_MODEL
 
-import secrets
-
 # Create your models here.
 
 

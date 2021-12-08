@@ -4,7 +4,6 @@ from .models import *
 from django.core.mail import send_mail
 from django.http import JsonResponse
 import json
-from . import forms
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 

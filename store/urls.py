@@ -2,7 +2,6 @@ from os import name
 from django.urls import path
 
 from . import views
-from .forms import (PaymentForm)
 
 
 app_name = "store"
@@ -19,8 +18,6 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('update_item/', views.updateItem, name='update_item'),
     path('cart/', views.cart, name='cart'),
-    path('initiate_payment/', views.initiate_payment,
-         name='initiate-payment'),
     path('delivery/', views.delivery, name='delivery'),
 
 
